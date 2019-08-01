@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">InstaDemo</string>
+    <string-array name="arrayMainTab">
+        <item>"News Feed"</item>
+        <item>"STS"</item>
+        <item>"Live Sports"</item>
+        <item>"Profile"</item>
+    </string-array>
+</resources>
