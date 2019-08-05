@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import com.dv.instademo.fragment.ProfileFragment;
 import com.dv.instademo.R;
 import com.dv.instademo.fragment.SearchFragment;
-import com.dv.instademo.fragment.AddFragment;
+import com.dv.instademo.fragment.CreateFeedFragment;
 import com.dv.instademo.fragment.FavouriteFragment;
 import com.dv.instademo.fragment.HomeFragment;
 
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment());
         adapter.addFragment(new SearchFragment());
-        adapter.addFragment(new AddFragment());
+        adapter.addFragment(new CreateFeedFragment());
         adapter.addFragment(new FavouriteFragment());
         adapter.addFragment(new ProfileFragment());
         viewPager.setAdapter(adapter);
@@ -158,5 +158,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    }
+    public void onBack(){
+        onBackPressed();
     }
 }

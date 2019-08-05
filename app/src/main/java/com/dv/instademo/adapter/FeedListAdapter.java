@@ -14,6 +14,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.dv.instademo.R;
+import com.dv.instademo.helper.ItemClickInterface;
 import com.dv.instademo.model.SampleFeed;
 
 import java.util.ArrayList;
@@ -22,10 +23,11 @@ public class FeedListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private ArrayList<SampleFeed> sampleFeedArrayList;
     private Context context;
-
-    public FeedListAdapter(ArrayList<SampleFeed> sampleFeedArrayList, Context context) {
+    private ItemClickInterface itemClickInterface;
+    public FeedListAdapter(ArrayList<SampleFeed> sampleFeedArrayList, Context context,ItemClickInterface itemClickInterface) {
         this.sampleFeedArrayList = sampleFeedArrayList;
         this.context = context;
+        this.itemClickInterface = itemClickInterface;
     }
 
     @NonNull
@@ -62,19 +64,21 @@ public class FeedListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private class ViewHolder extends RecyclerView.ViewHolder {
         private final View mView;
-        private TextView textViewTitle, textViewDescription;
+        private TextView textViewTitle, textViewDescription,textViewOption;
         private ImageView imageViewFeed;
+
 
         private ViewHolder(View view) {
             super(view);
             mView = view;
             textViewTitle = mView.findViewById(R.id.textViewTitle);
             textViewDescription = mView.findViewById(R.id.textViewDescription);
+            textViewOption = mView.findViewById(R.id.textViewOption);
             imageViewFeed = mView.findViewById(R.id.imageViewFeed);
-
+            textViewOption.setOnClickListener(v -> itemClickInterface.passData(getAdapterPosition(),textViewOption));
         }
 
-
     }
+
 
 }

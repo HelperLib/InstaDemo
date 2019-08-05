@@ -17,11 +17,12 @@ import android.widget.ImageView;
 import com.dv.instademo.adapter.FeedListAdapter;
 import com.dv.instademo.helper.CirclePageIndicator;
 import com.dv.instademo.R;
+import com.dv.instademo.helper.ItemClickInterface;
 import com.dv.instademo.model.SampleFeed;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ItemClickInterface {
 
     private View view;
     private RecyclerView recyclerView;
@@ -41,16 +42,16 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupData() {
-        sampleFeedArrayList.add(new SampleFeed("0", "Popularity",R.drawable.img1,"Test Feed"));
+       /* sampleFeedArrayList.add(new SampleFeed("0", "Popularity",R.drawable.img1,"Test Feed"));
         sampleFeedArrayList.add(new SampleFeed("1", "Popularity",R.drawable.img1,"Test Feed"));
         sampleFeedArrayList.add(new SampleFeed("2", "Popularity",R.drawable.img1,"Test Feed"));
         sampleFeedArrayList.add(new SampleFeed("3", "Popularity",R.drawable.img1,"Test Feed"));
         sampleFeedArrayList.add(new SampleFeed("4", "Popularity",R.drawable.img1,"Test Feed"));
         sampleFeedArrayList.add(new SampleFeed("5", "Popularity",R.drawable.img1,"Test Feed"));
         sampleFeedArrayList.add(new SampleFeed("6", "Popularity",R.drawable.img1,"Test Feed"));
-        sampleFeedArrayList.add(new SampleFeed("7", "Popularity",R.drawable.img1,"Test Feed"));
+        sampleFeedArrayList.add(new SampleFeed("7", "Popularity",R.drawable.img1,"Test Feed"));*/
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        FeedListAdapter feedListAdapter = new FeedListAdapter(sampleFeedArrayList, getActivity());
+        FeedListAdapter feedListAdapter = new FeedListAdapter(sampleFeedArrayList, getActivity(),this);
         recyclerView.setAdapter(feedListAdapter);
     }
 
@@ -62,6 +63,11 @@ public class HomeFragment extends Fragment {
         viewPagerSlider.setAdapter(viewPagerAdapter);
         CirclePageIndicator circlePageIndicator =view.findViewById(R.id.indicator);
         circlePageIndicator.setViewPager(viewPagerSlider);
+    }
+
+    @Override
+    public void passData(int position,View view) {
+
     }
 
     public class ViewPagerAdapter extends PagerAdapter {
